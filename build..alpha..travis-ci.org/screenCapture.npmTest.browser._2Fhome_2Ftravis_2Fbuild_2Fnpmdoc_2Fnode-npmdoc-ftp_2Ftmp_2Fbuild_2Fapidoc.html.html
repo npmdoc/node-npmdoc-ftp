@@ -1,0 +1,448 @@
+<html><head></head><body><div class="apidocDiv">
+<style>
+/*csslint
+*/
+.apidocDiv {
+    background: #fff;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.apidocDiv a[href] {
+    color: #33f;
+    font-weight: bold;
+    text-decoration: none;
+}
+.apidocDiv a[href]:hover {
+    text-decoration: underline;
+}
+.apidocCodeCommentSpan {
+    background: #bbf;
+    color: #000;
+    display: block;
+}
+.apidocCodeKeywordSpan {
+    color: #d00;
+    font-weight: bold;
+}
+.apidocCodePre {
+    background: #eef;
+    border: 1px solid;
+    color: #777;
+    padding: 5px;
+    white-space: pre-wrap;
+}
+.apidocFooterDiv {
+    margin-top: 20px;
+    text-align: center;
+}
+.apidocModuleLi {
+    margin-top: 10px;
+}
+.apidocSectionDiv {
+    border-top: 1px solid;
+    margin-top: 20px;
+}
+.apidocSignatureSpan {
+    color: #777;
+    font-weight: bold;
+}
+</style>
+<h1>api documentation for
+    <a href="https://github.com/mscdex/node-ftp">ftp (v0.3.10)</a>
+</h1>
+<h4>An FTP client module for node.js</h4>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ftp">module ftp</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser">
+            function <span class="apidocSignatureSpan">ftp.</span>parser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.super_">
+            function <span class="apidocSignatureSpan">ftp.</span>super_
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <span class="apidocSignatureSpan">object <span class="apidocSignatureSpan">ftp.</span>parser.prototype</span>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ftp.parser">module ftp.parser</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser.parser">
+            function <span class="apidocSignatureSpan">ftp.</span>parser
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser.parseFeat">
+            function <span class="apidocSignatureSpan">ftp.parser.</span>parseFeat
+            <span class="apidocSignatureSpan">(text)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser.parseListEntry">
+            function <span class="apidocSignatureSpan">ftp.parser.</span>parseListEntry
+            <span class="apidocSignatureSpan">(line)</span>
+            </a>
+
+        </li>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser.super_">
+            function <span class="apidocSignatureSpan">ftp.parser.</span>super_
+            <span class="apidocSignatureSpan">(options)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+    <li class="apidocModuleLi"><a href="#apidoc.module.ftp.parser.prototype">module ftp.parser.prototype</a><ol>
+
+        <li>
+
+            <a class="apidocElementLiA" href="#apidoc.element.ftp.parser.prototype._write">
+            function <span class="apidocSignatureSpan">ftp.parser.prototype.</span>_write
+            <span class="apidocSignatureSpan">(chunk, encoding, cb)</span>
+            </a>
+
+        </li>
+
+    </ol></li>
+
+</ol></div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ftp" id="apidoc.module.ftp">module ftp</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser" id="apidoc.element.ftp.parser">
+        function <span class="apidocSignatureSpan">ftp.</span>parser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parser(options) {
+  if (!(this instanceof Parser))
+    return new Parser(options);
+  WritableStream.call(this);
+
+  this._buffer = '';
+  this._debug = options.debug;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.super_" id="apidoc.element.ftp.super_">
+        function <span class="apidocSignatureSpan">ftp.</span>super_
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function EventEmitter() {
+  EventEmitter.init.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ftp.parser" id="apidoc.module.ftp.parser">module ftp.parser</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser.parser" id="apidoc.element.ftp.parser.parser">
+        function <span class="apidocSignatureSpan">ftp.</span>parser
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Parser(options) {
+  if (!(this instanceof Parser))
+    return new Parser(options);
+  WritableStream.call(this);
+
+  this._buffer = '';
+  this._debug = options.debug;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser.parseFeat" id="apidoc.element.ftp.parser.parseFeat">
+        function <span class="apidocSignatureSpan">ftp.parser.</span>parseFeat
+        <span class="apidocSignatureSpan">(text)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseFeat = function (text) {
+  var lines = text.split(RE_EOL);
+  lines.shift(); // initial response line
+  lines.pop(); // final response line
+
+  for (var i = 0, len = lines.length; i &lt; len; ++i)
+    lines[i] = lines[i].trim();
+
+  // just return the raw lines for now
+  return lines;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser.parseListEntry" id="apidoc.element.ftp.parser.parseListEntry">
+        function <span class="apidocSignatureSpan">ftp.parser.</span>parseListEntry
+        <span class="apidocSignatureSpan">(line)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">parseListEntry = function (line) {
+  var ret,
+      info,
+      month, day, year,
+      hour, mins;
+
+  if (ret = XRegExp.exec(line, REX_LISTUNIX)) {
+    info = {
+      type: ret.type,
+      name: undefined,
+      target: undefined,
+      sticky: false,
+      rights: {
+        user: ret.permission.substr(0, 3).replace(RE_DASH, ''),
+        group: ret.permission.substr(3, 3).replace(RE_DASH, ''),
+        other: ret.permission.substr(6, 3).replace(RE_DASH, '')
+      },
+      acl: (ret.acl === '+'),
+      owner: ret.owner,
+      group: ret.group,
+      size: parseInt(ret.size, 10),
+      date: undefined
+    };
+
+    // check for sticky bit
+    var lastbit = info.rights.other.slice(-1);
+    if (lastbit === 't') {
+      info.rights.other = info.rights.other.slice(0, -1) + 'x';
+      info.sticky = true;
+    } else if (lastbit === 'T') {
+      info.rights.other = info.rights.other.slice(0, -1);
+      info.sticky = true;
+    }
+
+    if (ret.month1 !== undefined) {
+      month = parseInt(MONTHS[ret.month1.toLowerCase()], 10);
+      day = parseInt(ret.date1, 10);
+      year = (new Date()).getFullYear();
+      hour = parseInt(ret.hour, 10);
+      mins = parseInt(ret.minute, 10);
+      if (month &lt; 10)
+        month = '0' + month;
+      if (day &lt; 10)
+        day = '0' + day;
+      if (hour &lt; 10)
+        hour = '0' + hour;
+      if (mins &lt; 10)
+        mins = '0' + mins;
+      info.date = new Date(year + '-'
+                           + month + '-'
+                           + day + 'T'
+                           + hour + ':'
+                           + mins);
+      // If the date is in the past but no more than 6 months old, year
+      // isn't displayed and doesn't have to be the current year.
+      //
+      // If the date is in the future (less than an hour from now), year
+      // isn't displayed and doesn't have to be the current year.
+      // That second case is much more rare than the first and less annoying.
+      // It's impossible to fix without knowing about the server's timezone,
+      // so we just don't do anything about it.
+      //
+      // If we're here with a time that is more than 28 hours into the
+      // future (1 hour + maximum timezone offset which is 27 hours),
+      // there is a problem -- we should be in the second conditional block
+      if (info.date.getTime() - Date.now() &gt; 100800000) {
+        info.date = new Date((year - 1) + '-'
+                             + month + '-'
+                             + day + 'T'
+                             + hour + ':'
+                             + mins);
+      }
+
+      // If we're here with a time that is more than 6 months old, there's
+      // a problem as well.
+      // Maybe local &amp; remote servers aren't on the same timezone (with remote
+      // ahead of local)
+      // For instance, remote is in 2014 while local is still in 2013. In
+      // this case, a date like 01/01/13 02:23 could be detected instead of
+      // 01/01/14 02:23
+      // Our trigger point will be 3600*24*31*6 (since we already use 31
+      // as an upper bound, no need to add the 27 hours timezone offset)
+      if (Date.now() - info.date.getTime() &gt; 16070400000) {
+        info.date = new Date((year + 1) + '-'
+                             + month + '-'
+                             + day + 'T'
+                             + hour + ':'
+                             + mins);
+      }
+    } else if (ret.month2 !== undefined) {
+      month = parseInt(MONTHS[ret.month2.toLowerCase()], 10);
+      day = parseInt(ret.date2, 10);
+      year = parseInt(ret.year, 10);
+      if (month &lt; 10)
+        month = '0' + month;
+      if (day &lt; 10)
+        day = '0' + day;
+      info.date = new Date(year + '-' + month + '-' + day);
+    }
+    if (ret.type === 'l') {
+      var pos = ret.name.indexOf(' -&gt; ');
+      info.name = ret.name.substring(0, pos);
+      info.target = ret.name.substring(pos+4);
+    } else
+      info.name = ret.name;
+    ret = info;
+  } else if (ret = XRegExp.exec(line, REX_LISTMSDOS)) {
+    info = {
+      name: ret.name,
+      type: (ret.isdir ? 'd' : '-'),
+      size: (ret.isdir ? 0 : parseInt(ret.size, 10)), ...</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser.super_" id="apidoc.element.ftp.parser.super_">
+        function <span class="apidocSignatureSpan">ftp.parser.</span>super_
+        <span class="apidocSignatureSpan">(options)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">function Writable(options) {
+  // Writable ctor is applied to Duplexes, too.
+  // `realHasInstance` is necessary because using plain `instanceof`
+  // would return false, as no `_writableState` property is attached.
+
+  // Trying to use the custom `instanceof` for Writable here will also break the
+  // Node.js LazyTransform implementation, which has a non-trivial getter for
+  // `_writableState` that would lead to infinite recursion.
+  if (!(realHasInstance.call(Writable, this)) &amp;&amp;
+      !(this instanceof Stream.Duplex)) {
+    return new Writable(options);
+  }
+
+  this._writableState = new WritableState(options, this);
+
+  // legacy.
+  this.writable = true;
+
+  if (options) {
+    if (typeof options.write === 'function')
+      this._write = options.write;
+
+    if (typeof options.writev === 'function')
+      this._writev = options.writev;
+  }
+
+  Stream.call(this);
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocSectionDiv">
+<h1><a href="#apidoc.module.ftp.parser.prototype" id="apidoc.module.ftp.parser.prototype">module ftp.parser.prototype</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.ftp.parser.prototype._write" id="apidoc.element.ftp.parser.prototype._write">
+        function <span class="apidocSignatureSpan">ftp.parser.prototype.</span>_write
+        <span class="apidocSignatureSpan">(chunk, encoding, cb)</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">_write = function (chunk, encoding, cb) {
+  var m, code, reRmLeadCode, rest = '', debug = this._debug;
+
+  this._buffer += chunk.toString('binary');
+
+  while (m = RE_RES_END.exec(this._buffer)) {
+    // support multiple terminating responses in the buffer
+    rest = this._buffer.substring(m.index + m[0].length);
+    if (rest.length)
+      this._buffer = this._buffer.substring(0, m.index + m[0].length);
+
+    debug&amp;&amp;debug('[parser] &lt; ' + inspect(this._buffer));
+
+    // we have a terminating response line
+    code = parseInt(m[1], 10);
+
+    // RFC 959 does not require each line in a multi-line response to begin
+    // with '&lt;code&gt;-', but many servers will do this.
+    //
+    // remove this leading '&lt;code&gt;-' (or '&lt;code&gt; ' from last line) from each
+    // line in the response ...
+    reRmLeadCode = '(^|\\r?\\n)';
+    reRmLeadCode += m[1];
+    reRmLeadCode += '(?: |\\-)';
+    reRmLeadCode = new RegExp(reRmLeadCode, 'g');
+    var text = this._buffer.replace(reRmLeadCode, '$1').trim();
+    this._buffer = rest;
+
+    debug&amp;&amp;debug('[parser] Response: code=' + code + ', buffer=' + inspect(text));
+    this.emit('response', code, text);
+  }
+
+  cb();
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
+
+</div>
+
+<div class="apidocFooterDiv">
+    [ this document was created with
+    <a href="https://github.com/kaizhu256/node-utility2" target="_blank">utility2</a>
+    ]
+</div>
+</div>
+</body></html>
