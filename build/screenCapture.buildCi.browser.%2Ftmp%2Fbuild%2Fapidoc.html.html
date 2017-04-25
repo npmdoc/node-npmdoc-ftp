@@ -65,15 +65,6 @@
 
         <li>
 
-            <a class="apidocElementLiA" href="#apidoc.element.ftp.connection">
-            function <span class="apidocSignatureSpan">ftp.</span>connection
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
             <a class="apidocElementLiA" href="#apidoc.element.ftp.parser">
             function <span class="apidocSignatureSpan">ftp.</span>parser
             <span class="apidocSignatureSpan">(options)</span>
@@ -85,15 +76,6 @@
 
             <a class="apidocElementLiA" href="#apidoc.element.ftp.super_">
             function <span class="apidocSignatureSpan">ftp.</span>super_
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.ftp.toString">
-            function <span class="apidocSignatureSpan">ftp.</span>toString
             <span class="apidocSignatureSpan">()</span>
             </a>
 
@@ -160,19 +142,6 @@
 
     </ol></li>
 
-    <li class="apidocModuleLi"><a href="#apidoc.module.ftp.toString">module ftp.toString</a><ol>
-
-        <li>
-
-            <a class="apidocElementLiA" href="#apidoc.element.ftp.toString.toString">
-            function <span class="apidocSignatureSpan">ftp.</span>toString
-            <span class="apidocSignatureSpan">()</span>
-            </a>
-
-        </li>
-
-    </ol></li>
-
 </ol></div>
 
 <div class="apidocSectionDiv">
@@ -187,45 +156,6 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">ftp = function () {
-  if (!(this instanceof FTP))
-    return new FTP();
-
-  this._socket = undefined;
-  this._pasvSock = undefined;
-  this._feat = undefined;
-  this._curReq = undefined;
-  this._queue = [];
-  this._secstate = undefined;
-  this._debug = undefined;
-  this._keepalive = undefined;
-  this._ending = false;
-  this._parser = undefined;
-  this.options = {
-    host: undefined,
-    port: undefined,
-    user: undefined,
-    password: undefined,
-    secure: false,
-    secureOptions: undefined,
-    connTimeout: undefined,
-    pasvTimeout: undefined,
-    aliveTimeout: undefined
-  };
-  this.connected = false;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-
-    <h2>
-        <a href="#apidoc.element.ftp.connection" id="apidoc.element.ftp.connection">
-        function <span class="apidocSignatureSpan">ftp.</span>connection
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">connection = function () {
   if (!(this instanceof FTP))
     return new FTP();
 
@@ -292,36 +222,6 @@
 
 
 
-    <h2>
-        <a href="#apidoc.element.ftp.toString" id="apidoc.element.ftp.toString">
-        function <span class="apidocSignatureSpan">ftp.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">toString = function () {
-    return text;
-}</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-this._debug = options.debug;
-}
-inherits(Parser, WritableStream);
-
-Parser.prototype._write = function(chunk, encoding, cb) {
-var m, code, reRmLeadCode, rest = '', debug = this._debug;
-
-this._buffer += chunk.<span class="apidocCodeKeywordSpan">toString</span>('binary');
-
-while (m = RE_RES_END.exec(this._buffer)) {
-  // support multiple terminating responses in the buffer
-  rest = this._buffer.substring(m.index + m[0].length);
-  if (rest.length)
-    this._buffer = this._buffer.substring(0, m.index + m[0].length);
-...</pre></li>
-    </ul>
-
-
-
 
 </div>
 
@@ -367,7 +267,23 @@ while (m = RE_RES_END.exec(this._buffer)) {
   // just return the raw lines for now
   return lines;
 }</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+    reentry(undefined, text, code);
+  }
+} else if (cmd === 'PASS') {
+  cmd = 'FEAT';
+  self._send(cmd, reentry, true);
+} else if (cmd === 'FEAT') {
+  if (!err)
+    self._feat = Parser.<span class="apidocCodeKeywordSpan">parseFeat</span>(text);
+  cmd = 'TYPE';
+  self._send('TYPE I', reentry, true);
+} else if (cmd === 'TYPE')
+  self.emit('ready');
+else if (cmd === 'PBSZ') {
+  cmd = 'PROT';
+  self._send('PROT P', reentry, true);
+...</pre></li>
     </ul>
 
 
@@ -490,7 +406,23 @@ while (m = RE_RES_END.exec(this._buffer)) {
       name: ret.name,
       type: (ret.isdir ? 'd' : '-'),
       size: (ret.isdir ? 0 : parseInt(ret.size, 10)), ...</pre></li>
-    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    <li>example usage<pre class="apidocCodePre">...
+  return cb();
+
+// process received data
+entries = buffer.split(RE_EOL);
+entries.pop(); // ending EOL
+var parsed = [];
+for (var i = 0, len = entries.length; i &lt; len; ++i) {
+  var parsedVal = Parser.<span class="apidocCodeKeywordSpan">parseListEntry</span>(entries[i]);
+  if (parsedVal !== null)
+    parsed.push(parsedVal);
+}
+
+if (zcomp) {
+  self._send('MODE S', function() {
+    cb(undefined, parsed);
+...</pre></li>
     </ul>
 
 
@@ -582,39 +514,6 @@ while (m = RE_RES_END.exec(this._buffer)) {
   cb();
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
-    </ul>
-
-
-</div>
-
-<div class="apidocSectionDiv">
-<h1><a href="#apidoc.module.ftp.toString" id="apidoc.module.ftp.toString">module ftp.toString</a></h1>
-
-
-    <h2>
-        <a href="#apidoc.element.ftp.toString.toString" id="apidoc.element.ftp.toString.toString">
-        function <span class="apidocSignatureSpan">ftp.</span>toString
-        <span class="apidocSignatureSpan">()</span>
-        </a>
-    </h2>
-    <ul>
-    <li>description and source-code<pre class="apidocCodePre">function toString() { [native code] }</pre></li>
-    <li>example usage<pre class="apidocCodePre">...
-this._debug = options.debug;
-}
-inherits(Parser, WritableStream);
-
-Parser.prototype._write = function(chunk, encoding, cb) {
-var m, code, reRmLeadCode, rest = '', debug = this._debug;
-
-this._buffer += chunk.<span class="apidocCodeKeywordSpan">toString</span>('binary');
-
-while (m = RE_RES_END.exec(this._buffer)) {
-  // support multiple terminating responses in the buffer
-  rest = this._buffer.substring(m.index + m[0].length);
-  if (rest.length)
-    this._buffer = this._buffer.substring(0, m.index + m[0].length);
-...</pre></li>
     </ul>
 
 
