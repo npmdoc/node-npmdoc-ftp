@@ -1,4 +1,7 @@
-# api documentation for  [ftp (v0.3.10)](https://github.com/mscdex/node-ftp)  [![npm package](https://img.shields.io/npm/v/npmdoc-ftp.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ftp) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ftp.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ftp)
+# npmdoc-ftp
+
+#### basic api documentation for  [ftp (v0.3.10)](https://github.com/mscdex/node-ftp)  [![npm package](https://img.shields.io/npm/v/npmdoc-ftp.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ftp) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ftp.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ftp)
+
 #### An FTP client module for node.js
 
 [![NPM](https://nodei.co/npm/ftp.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/ftp)
@@ -65,7 +68,8 @@
     "scripts": {
         "test": "node test/test.js"
     },
-    "version": "0.3.10"
+    "version": "0.3.10",
+    "bin": {}
 }
 ```
 

@@ -1,7 +1,7 @@
 {
     "author": "kai zhu <kaizhu256@gmail.com>",
     "buildNpmdoc": "ftp",
-    "description": "api documentation for [ftp (v0.3.10)](https://github.com/mscdex/node-ftp) [![npm package](https://img.shields.io/npm/v/npmdoc-ftp.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ftp) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ftp.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ftp)",
+    "description": "#### basic api documentation for  [ftp (v0.3.10)](https://github.com/mscdex/node-ftp)  [![npm package](https://img.shields.io/npm/v/npmdoc-ftp.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-ftp) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-ftp.svg)](https://travis-ci.org/npmdoc/node-npmdoc-ftp)",
     "devDependencies": {
         "electron-lite": "kaizhu256/node-electron-lite#alpha",
         "ftp": "*",
